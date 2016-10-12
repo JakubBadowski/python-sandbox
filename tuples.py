@@ -1,6 +1,6 @@
 #! python3
 
-print('Lists and Tuples')
+print('Tuples')
 
 # Tuples
 tup1 = 1,2,67,3,6,4
