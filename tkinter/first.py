@@ -1,6 +1,7 @@
 #! python3
 
 from tkinter import *
+from PIL import Image, ImageTk
 
 class Window(Frame):
     def __init__(self, master = None):
@@ -23,6 +24,8 @@ class Window(Frame):
         menu.add_cascade(label='File', menu=file)
 
         edit = Menu(menu)
+        edit.add_command(label='Show Image', command=self.showImage)
+        edit.add_command(label='Show Text', command=self.showText)
         edit.add_command(label='Undo', command=self.client_samp)
         menu.add_cascade(label='Edit', menu=edit)
         
@@ -33,6 +36,21 @@ class Window(Frame):
 
         quitButton = Button(self, text="Quit", command=self.client_exit)
         quitButton.place(x=100, y=10)
+
+    def showImage(self):
+        print('Show image')
+        load = Image.open('foto.png')
+        render = ImageTk.PhotoImage(load)
+
+        img = Label(self, image=render)
+        img.image = render
+        img.place(x=0,y=0)
+
+    def showText(self):
+        print('show text')
+        text = Label(self, text='Hello World')
+        text.pack()
+        
 
     def client_samp(self):
         print('Click log...')
